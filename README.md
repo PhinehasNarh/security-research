@@ -14,7 +14,8 @@ Some of these are my own finds; others are my take on / collaboration around som
 
 | Date | What | Class | Origin |
 |------|------|-------|--------|
-| 2026-07 | [Rating-rail injection in garak's LLM-judge](writeups/2026-07-garak-llm-judge-rating-injection.md) | LLM-as-judge prompt injection | my fix, collaborative thread |
+| 2026-07 | [Rating-rail injection in garak's LLM-judge](writeups/2026-07-garak-llm-judge-rating-injection.md) | LLM-as-judge prompt injection | AUTHENSOR reported ([#1868](https://github.com/NVIDIA/garak/issues/1868)); my fix + writeup |
+| 2026-07 | [Unicode homoglyph evasion of garak's string detectors](writeups/2026-07-garak-unicode-detector-evasion.md) | Detection evasion | AUTHENSOR reported ([#1867](https://github.com/NVIDIA/garak/issues/1867)); my fix + writeup |
 | 2026-07 | [Tar-slip path traversal in MLRun's archive extraction](writeups/2026-07-mlrun-tarslip-path-traversal.md) | Path traversal (CWE-22) | my find + fix |
 
 More land here as the underlying bugs go public.
@@ -31,8 +32,8 @@ More land here as the underlying bugs go public.
 ## Open PRs
 
 **LLM / AI security**
-- **NVIDIA/garak [#1884](https://github.com/NVIDIA/garak/pull/1884)** - Unicode-normalize `StringDetector` inputs so a model can't dodge detection with homoglyphs or weird compatibility forms.
-- **NVIDIA/garak [#1885](https://github.com/NVIDIA/garak/pull/1885)** - stop a jailbreak target from forging the TAP/PAIR judge's verdict by injecting rating markers into its own output.
+- **NVIDIA/garak [#1884](https://github.com/NVIDIA/garak/pull/1884)** - Unicode-normalize `StringDetector` inputs so a model can't dodge detection with homoglyphs or weird compatibility forms. (my fix for AUTHENSOR's [#1867](https://github.com/NVIDIA/garak/issues/1867))
+- **NVIDIA/garak [#1885](https://github.com/NVIDIA/garak/pull/1885)** - stop a jailbreak target from forging the TAP/PAIR judge's verdict by injecting rating markers into its own output. (my fix for AUTHENSOR's [#1868](https://github.com/NVIDIA/garak/issues/1868))
 
 **DevSecOps / detection**
 - **bridgecrewio/checkov [#7595](https://github.com/bridgecrewio/checkov/pull/7595)** - flag AWS Secrets Manager policies that grant access to any principal.

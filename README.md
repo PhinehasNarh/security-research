@@ -10,9 +10,12 @@ Quick note on ethics: I only test stuff I run myself or have permission to test,
 
 ## Writeups
 
-| Date | What | Class |
-|------|------|-------|
-| 2026-07 | [Tar-slip path traversal in MLRun's archive extraction](writeups/2026-07-mlrun-tarslip-path-traversal.md) | Path traversal (CWE-22) |
+Some of these are my own finds; others are my take on / collaboration around someone else's discovery (a fresh angle, a deeper root cause, a variant). When the find isn't mine, the original researcher gets credited up top and I'm clear about what I actually contributed.
+
+| Date | What | Class | Origin |
+|------|------|-------|--------|
+| 2026-07 | [Rating-rail injection in garak's LLM-judge](writeups/2026-07-garak-llm-judge-rating-injection.md) | LLM-as-judge prompt injection | my fix, collaborative thread |
+| 2026-07 | [Tar-slip path traversal in MLRun's archive extraction](writeups/2026-07-mlrun-tarslip-path-traversal.md) | Path traversal (CWE-22) | my find + fix |
 
 More land here as the underlying bugs go public.
 

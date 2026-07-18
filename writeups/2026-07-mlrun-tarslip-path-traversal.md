@@ -27,20 +27,28 @@ Since MLRun pulls these archives from a source you might not fully trust (a URL,
 
 I routed both functions through shared safe-extract helpers instead of calling `extractall` blind.
 
-For tar, the modern answer is the [PEP 706](https://peps.python.org/pep-0706/) `data` filter, which rejects members that escape the target, plus a pre-flight check on every member so nothing sneaks through on older behavior:
+Both formats now run every member through one shared check before anything is written, and tar additionally gets the [PEP 706](https://peps.python.org/pep-0706/) `data` filter as a second line of defense:
 
 ```python
 def _safe_extract_tar(tf, target_dir):
     for member in tf.getmembers():
-        target = os.path.join(target_dir, member.name)
-        if not _is_path_under(target, target_dir):
-            raise mlrun.errors.MLRunInvalidArgumentError(
-                f"archive member escapes target dir: {member.name}"
-            )
-    tf.extractall(target_dir, filter="data")
+        _reject_member_escaping_target(member.name, target_dir)
+    tf.extractall(path=target_dir, filter="data")
+
+def _reject_member_escaping_target(member_name, target_dir):
+    member_path = os.path.join(target_dir, member_name)
+    if not _is_path_under(member_path, target_dir):
+        raise mlrun.errors.MLRunInvalidArgumentError(
+            f"archive member escapes target dir: {member_name}"
+        )
+
+def _is_path_under(child, parent):
+    parent_real = os.path.realpath(parent)
+    child_real = os.path.realpath(child)
+    return child_real == parent_real or child_real.startswith(parent_real + os.sep)
 ```
 
-`_is_path_under` resolves both sides with `os.path.realpath` before comparing, so `..` and symlink tricks both collapse to a real path first.
+`_is_path_under` resolves both sides with `os.path.realpath` before comparing, so `..` and symlink tricks both collapse to a real path first. The zip path (`_safe_extract_zip`) calls the exact same `_reject_member_escaping_target`, so both extractors share one definition of "did this escape."
 
 Then the callers got a `try/finally` so the downloaded archive gets cleaned up even if extraction blows up:
 

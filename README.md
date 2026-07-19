@@ -15,6 +15,7 @@ Some of these are my own finds; others are my take on / collaboration around som
 | Date | What | Class | Origin |
 |------|------|-------|--------|
 | 2026-07 | [Read-only SQL is harder than it looks (how an MCP DB server enforces it)](writeups/2026-07-mcp-readonly-sql-enforcement.md) | MCP / read-only SQL enforcement | analysis / teardown ([dbhub](https://github.com/bytebase/dbhub)) |
+| 2026-07 | [Server-side fetch without the SSRF (the three states, and why you pin)](writeups/2026-07-server-side-fetch-ssrf-pinning.md) | SSRF / server-side fetch | analysis / pattern ([linkwarden safeFetch](https://github.com/linkwarden/linkwarden)) |
 | 2026-07 | [Rating-rail injection in garak's LLM-judge](writeups/2026-07-garak-llm-judge-rating-injection.md) | LLM-as-judge prompt injection | AUTHENSOR reported ([#1868](https://github.com/NVIDIA/garak/issues/1868)); my fix + writeup |
 | 2026-07 | [Unicode homoglyph evasion of garak's string detectors](writeups/2026-07-garak-unicode-detector-evasion.md) | Detection evasion | AUTHENSOR reported ([#1867](https://github.com/NVIDIA/garak/issues/1867)); my fix + writeup |
 | 2026-07 | [Tar-slip path traversal in MLRun's archive extraction](writeups/2026-07-mlrun-tarslip-path-traversal.md) | Path traversal (CWE-22) | my find + fix |

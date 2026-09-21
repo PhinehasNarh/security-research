@@ -19,6 +19,7 @@ Some of these are my own finds; others are my take on / collaboration around som
 | 2026-07 | [Rating-rail injection in garak's LLM-judge](writeups/2026-07-garak-llm-judge-rating-injection.md) | LLM-as-judge prompt injection | AUTHENSOR reported ([#1868](https://github.com/NVIDIA/garak/issues/1868)); my fix + writeup |
 | 2026-07 | [Unicode homoglyph evasion of garak's string detectors](writeups/2026-07-garak-unicode-detector-evasion.md) | Detection evasion | AUTHENSOR reported ([#1867](https://github.com/NVIDIA/garak/issues/1867)); my fix + writeup |
 | 2026-07 | [Tar-slip path traversal in MLRun's archive extraction](writeups/2026-07-mlrun-tarslip-path-traversal.md) | Path traversal (CWE-22) | my find + fix |
+| 2026-09 | [Two engines, one bug: a DNS-rebinding SSRF hiding behind a correct SSRF check](writeups/2026-09-pdf-reader-mcp-dns-rebinding-ssrf.md) | SSRF / DNS-rebinding TOCTOU (CWE-918/367) | my find ([GHSA-rgg9-pwc3-jg39](https://github.com/SylphxAI/pdf-reader-mcp/security/advisories/GHSA-rgg9-pwc3-jg39)) |
 
 More land here as the underlying bugs go public.
 
@@ -55,7 +56,6 @@ Found these, told the vendor, holding the details until they patch. I'll name na
 |------|-------|------|----------|
 | 2026-07 | self-hosted backup manager | authed operator -> host RCE via argument injection (CWE-78) | Critical (9.9) |
 | 2026-07 | self-hosted audiobook server | cross-library broken access control (CWE-285/639) | Medium (5.4) |
-| 2026-07 | MCP PDF-reader server | DNS-rebinding SSRF in the default engine (CWE-918/367) | Medium (5.3) |
 | 2026-07 | MCP shell-command server | command-allowlist bypass via exec-capable flags -> RCE (CWE-88/77) | High (8.1) |
 | 2026-07 | Puppet dashboard | stored XSS (CWE-79) | Moderate (5.4) |
 | 2026-07 | workflow/SOAR platform | tenant-isolation (RLS) off by default, defense-in-depth hardening | Low / hardening |
